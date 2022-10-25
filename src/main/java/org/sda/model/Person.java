@@ -15,7 +15,7 @@ public class Person {
     private String lastName;
     private String email;
     private String phoneNumber;
-    private String address;
+    private String address; //source address
 
     // All arguments constructor
     public Person(Long id, String firstName, String lastName, String email, String phoneNumber, String address) {
