@@ -1,9 +1,8 @@
 package org.sda;
 
-import org.sda.model.Dog;
-import org.sda.model.Passenger;
-import org.sda.model.Person;
-import org.sda.model.PrivatePassenger;
+import org.sda.model.*;
+
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -32,10 +31,10 @@ public class Main {
 
 
         //INHERITANCE
-        Passenger passenger = new Passenger("CARD", "Parnu");
+        Passenger passenger = new Passenger(PaymentType.CARD, "Parnu");
         passenger.setEmail("passenger@gmail.com"); // Access Person fields using Passenger object
 
-        PrivatePassenger privatePassenger = new PrivatePassenger("CARD", "Viljandi");
+        PrivatePassenger privatePassenger = new PrivatePassenger(PaymentType.CARD, "Viljandi");
         privatePassenger.setPersonalIDCode("238746521873"); //Access PrivatePassenger's field
         privatePassenger.setDestinationAddress("tartu"); //Access Passenger's field
         privatePassenger.setPhoneNumber("+3722387647654"); //Access Person's field
@@ -53,7 +52,7 @@ public class Main {
 
         //Polymorphism
         Person person3 = new Person(12345L, "Parnu");
-        Person person4 = new Passenger("CARD", "Viljandi");
+        Person person4 = new Passenger(PaymentType.CARD, "Viljandi");
         System.out.println(person3.toString());
         System.out.println(person4.toString());
 
@@ -69,9 +68,28 @@ public class Main {
         passenger1.getHiddenAlive();
 
         //passing parameters
-        Passenger passenger2 = new Passenger(123456L, "Tallinn", "CASH", "Tartu");
+        Passenger passenger2 = new Passenger(123456L, "Tallinn", PaymentType.CASH, "Tartu");
         printPersonAddress(passenger2);
         printPassengerWithPrefix("Passenger: ", passenger2);
+
+
+        //Composition exercise
+        Muzzle muzzle = new Muzzle();
+        muzzle.setId(890L);
+        muzzle.setNoiseRange(10);
+        muzzle.setTooNoisy(true);
+
+
+        Dog dog1 = new Dog(true, "DOBER");
+        dog1.setMuzzle(muzzle);
+
+        System.out.println(dog1.getMuzzle().toString());
+
+
+        //enums
+        System.out.println(PaymentType.CARD); // prints enum 'CARD'
+        System.out.println(Arrays.toString(PaymentType.values())); // prints all the enum values
+        System.out.println(PaymentType.BANK_TRANSFER.getValue()); // prints the value of the enum '3'
     }
 
 
