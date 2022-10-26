@@ -31,9 +31,8 @@ public class Main {
         System.out.println(dog.getWeight());
 
 
-
         //INHERITANCE
-        Passenger passenger  = new Passenger("CARD", "Parnu");
+        Passenger passenger = new Passenger("CARD", "Parnu");
         passenger.setEmail("passenger@gmail.com"); // Access Person fields using Passenger object
 
         PrivatePassenger privatePassenger = new PrivatePassenger("CARD", "Viljandi");
@@ -58,10 +57,29 @@ public class Main {
         System.out.println(person3.toString());
         System.out.println(person4.toString());
 
+
         // Calling parent methods
         Passenger passenger1 = new Passenger();
         passenger1.setAddress("Tallinn"); // Person.address
         passenger1.setDestinationAddress("Tartu"); // Passenger.destinationAddress
         System.out.println(passenger1.getAddresses());
+
+
+        //Calling parent's hidden field
+        passenger1.getHiddenAlive();
+
+        //passing parameters
+        Passenger passenger2 = new Passenger(123456L, "Tallinn", "CASH", "Tartu");
+        printPersonAddress(passenger2);
+        printPassengerWithPrefix("Passenger: ", passenger2);
+    }
+
+
+    private static void printPersonAddress(Person person) {
+        System.out.println(person.getAddress());
+    }
+
+    private static void printPassengerWithPrefix(String prefix, Object object) {
+        System.out.println(prefix + object);
     }
 }
