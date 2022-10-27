@@ -90,6 +90,14 @@ public class Main {
         System.out.println(PaymentType.CARD); // prints enum 'CARD'
         System.out.println(Arrays.toString(PaymentType.values())); // prints all the enum values
         System.out.println(PaymentType.BANK_TRANSFER.getValue()); // prints the value of the enum '3'
+
+        // looping enums
+        for(PaymentType paymentType: PaymentType.values()) {
+            System.out.println(paymentType.name());
+        }
+
+        // enum method overriding
+        System.out.println(PaymentType.MOBILE_BANKING.toString());
     }
 
 
