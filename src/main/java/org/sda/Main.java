@@ -98,6 +98,15 @@ public class Main {
 
         // enum method overriding
         System.out.println(PaymentType.MOBILE_BANKING.toString());
+
+
+        //Enum exercise
+        System.out.println(">>>>>>>>>>>>>PLANETS<<<<<<<<<<<<<<<<");
+        System.out.println(Planets.JUPITER.toString());
+        System.out.println("Distance of " + Planets.JUPITER.name() + " from Earth: " + Planets.JUPITER.distanceFromEarth());
+        System.out.println("-------------------");
+        System.out.println(Planets.MARS.toString());
+        System.out.println("Distance of " + Planets.MARS.name() + " from Earth: " + Planets.MARS.distanceFromEarth());
     }
 
 
