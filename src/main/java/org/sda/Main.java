@@ -20,5 +20,23 @@ public class Main {
         System.out.println("Person's full name: " + personService.getPersonFullName(person));
 
         System.out.println("Person's last name: " + person.getLastName());
+
+
+        //EXCEPTION
+        //Exception handling
+        try {
+            int[] intArray = {1, 4, 56, 7};
+
+            for (int i = 0; i < intArray.length; i++) {
+                System.out.println(intArray[i]);
+            }
+        } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
+            System.out.println("The number cannot be printed because its unavailable in the array!");
+        } catch (Exception exception) {
+            System.out.println("Exception being caught");
+        } finally { // This blocked will be executed irrespective of catch blocks
+            int a = 15;
+            System.out.println("Finally executed, a: " + a);
+        }
     }
 }
