@@ -1,5 +1,8 @@
 package org.sda;
 
+import org.sda.abstracts.Food;
+import org.sda.abstracts.Fruit;
+import org.sda.abstracts.Veggie;
 import org.sda.exceptions.PersonNotFoundException;
 import org.sda.models.Person;
 import org.sda.services.PersonService;
@@ -71,11 +74,19 @@ public class Main {
 
         // H.W. Exercise - Exception handling
         try {
-            displayNumber();
+           // displayNumber();
         } catch(InputMismatchException e) {
             System.out.println(e.getLocalizedMessage());
             displayNumber();
         }
+
+
+        // Abstract class
+        Fruit fruit = new Fruit("Red");
+        fruit.eat();
+
+        Food food = new Veggie("Green"); // We cannot instantiate (new Food()) but you can assign the child class to the abstract class
+        food.eat();
     }
 
     private static void displayNumber() {
