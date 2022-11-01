@@ -5,8 +5,11 @@ import org.sda.models.Person;
 import org.sda.services.PersonService;
 import org.sda.services.implementations.PersonServiceImpl;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Main {
-    public static void main(String[] args) throws PersonNotFoundException {
+    public static void main(String[] args) {
         //INTERFACE
         Person person = new Person();
         person.setFirstName("Vinod");
@@ -49,8 +52,42 @@ public class Main {
 
 
         //Custom / user-defined exceptions
-        System.out.println(personService.findPersonByFirstName("Vinod").toString());
+        Person testPerson;
+
+        try {
+            testPerson = personService.findPersonByFirstName("Helar");
+        } catch (PersonNotFoundException e) {
+            System.out.println(e.getLocalizedMessage());
+
+            // alternative code
+            testPerson = new Person();
+            testPerson.setFirstName("Unknown");
+            testPerson.setLastName("Unknown last");
+            testPerson.setAge(10);
+        }
+
+        System.out.println(testPerson.toString());
 
 
+        // H.W. Exercise - Exception handling
+        try {
+            displayNumber();
+        } catch(InputMismatchException e) {
+            System.out.println(e.getLocalizedMessage());
+            displayNumber();
+        }
+    }
+
+    private static void displayNumber() {
+        Scanner scanner = new Scanner(System.in);
+        if(scanner.hasNextInt()) {
+            int i = scanner.nextInt();
+            System.out.println("int -> " + i);
+        } else if(scanner.hasNextDouble()) {
+            double d = scanner.nextDouble();
+            System.out.println("double -> " + d);
+        } else {
+            throw new InputMismatchException("Hey! that's not a value, try once more!");
+        }
     }
 }
