@@ -40,6 +40,7 @@ public class Main {
                 menuOperation(shoppingBag);
                 break;
             case 4: // exit
+                System.out.println("Thanks for shopping. Visit us again!");
                 break;
             default:
                 System.out.println("Incorrect option, choose the correct one!");
@@ -102,9 +103,10 @@ public class Main {
     private static void displayItems(List<String> shoppingBag) {
         int counter = 1;
 
+        System.out.println("ITEMS: ");
         for(int i = 0; i < shoppingBag.size(); i++) {
             String thisItem = shoppingBag.get(i);
-            String nextItem = (i + 1) == (shoppingBag.size() - 1) ? shoppingBag.get(i + 1) : "";
+            String nextItem = (i + 1) <= (shoppingBag.size() - 1) ? shoppingBag.get(i + 1) : "";
 
             if(thisItem.startsWith("m") || thisItem.startsWith("M") || nextItem.startsWith("m") || nextItem.startsWith("M")) {
                 System.out.println(counter + ". " + thisItem);
