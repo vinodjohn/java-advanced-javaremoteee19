@@ -26,7 +26,7 @@ public class Main {
     private static void menuOperation(List<String> shoppingBag) {
         int menuOption = getMenu();
 
-        switch(menuOption) {
+        switch (menuOption) {
             case 1: // Add item
                 addItem(shoppingBag);
                 menuOperation(shoppingBag);
@@ -55,7 +55,7 @@ public class Main {
 
         List<String> menu = List.of("Add item", "Delete item", "Display items", "Exit");
 
-        for(int i = 0; i < menu.size(); i++) {
+        for (int i = 0; i < menu.size(); i++) {
             System.out.println(i + 1 + ". " + menu.get(i));
         }
 
@@ -67,15 +67,15 @@ public class Main {
     private static void addItem(List<String> shoppingBag) {
         boolean isAdd = true;
 
-        while(isAdd) {
+        while (isAdd) {
             System.out.println("Enter an item name to be added to the bag: ");
             String addItem = SCANNER.next();
 
             if (!shoppingBag.contains(addItem)) {
                 shoppingBag.add(addItem);
-                System.out.println("'"+ addItem +"' added to the bag. Do you want to add more item?");
+                System.out.println("'" + addItem + "' added to the bag. Do you want to add more item? (true/false)");
             } else {
-                System.out.println("The item already exists, do you want to add an other item?");
+                System.out.println("The item already exists, do you want to add an other item? (true/false)");
             }
 
             isAdd = SCANNER.nextBoolean();
@@ -85,15 +85,15 @@ public class Main {
     private static void deleteItem(List<String> shoppingBag) {
         boolean isDelete = true;
 
-        while(isDelete) {
+        while (isDelete) {
             System.out.println("Enter an item name to be deleted from the bag: ");
             String deleteItem = SCANNER.next();
 
             if (shoppingBag.contains(deleteItem)) {
                 shoppingBag.remove(deleteItem);
-                System.out.println("'"+ deleteItem +"' deleted from the bag. Do you want to delete more item?");
+                System.out.println("'" + deleteItem + "' deleted from the bag. Do you want to delete more item? (true/false)");
             } else {
-                System.out.println("The item not exists, do you want to delete an other item?");
+                System.out.println("The item not exists, do you want to delete an other item? (true/false)");
             }
 
             isDelete = SCANNER.nextBoolean();
@@ -104,14 +104,20 @@ public class Main {
         int counter = 1;
 
         System.out.println("ITEMS: ");
-        for(int i = 0; i < shoppingBag.size(); i++) {
+
+        for (int i = 0; i < shoppingBag.size(); i++) {
             String thisItem = shoppingBag.get(i);
             String nextItem = (i + 1) <= (shoppingBag.size() - 1) ? shoppingBag.get(i + 1) : "";
 
-            if(thisItem.startsWith("m") || thisItem.startsWith("M") || nextItem.startsWith("m") || nextItem.startsWith("M")) {
+            if (thisItem.startsWith("m") || thisItem.startsWith("M") || nextItem.startsWith("m") || nextItem.startsWith("M")) {
                 System.out.println(counter + ". " + thisItem);
                 counter++;
             }
+        }
+
+
+        if (counter == 1) {
+            System.out.println("Your shopping bag is empty or doesn't contain the expected items. No items to display!");
         }
     }
 }
