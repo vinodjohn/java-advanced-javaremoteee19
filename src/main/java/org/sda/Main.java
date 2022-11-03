@@ -6,6 +6,8 @@ import java.math.BigDecimal;
 import java.util.*;
 
 public class Main {
+
+    //@SuppressWarnings("unchecked")
     public static void main(String[] args) {
         // GENERIC TYPE
         Fruit fruit = new Fruit();
