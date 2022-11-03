@@ -93,6 +93,7 @@ public class Main {
         fullName.put("Vinod", "John");
         fullName.put("Martti", "Triksberg");
         fullName.put("Marko", "Piir");
+        // fullName.put("Marko", "Ennuste"); - > not possible as one key assign to one value. Duplicate key not allowed.
         System.out.println(fullName);
 
         System.out.println(fullName.get("Vinod"));
@@ -101,10 +102,24 @@ public class Main {
 
 
         Map<String, Integer> ageMap = new HashMap<>();
+        ageMap.put("Vinod", 15);
+        ageMap.put("Maria", 28);
 
+        //Map of List
         Map<String, List<String>> friendsMap = new HashMap<>();
+        List<String> vinodFriendList = List.of("Tony", "Mark", "Antony");
+        List<String> mariaFriendList = List.of("Angelin", "Aivi", "Eva");
+        friendsMap.put("Vinod", vinodFriendList);
+        friendsMap.put("Maria", mariaFriendList);
 
+        //Map of map
         Map<String, Map<String, String>> detailsMap = new HashMap<>();
+        Map<String, String> vinodInfoMap = new HashMap<>();
+        vinodInfoMap.put("age", "15");
+        vinodInfoMap.put("birthPlace", "India");
+        vinodInfoMap.put("residence", "Estonia");
+        vinodInfoMap.put("phone", "123456");
+        detailsMap.put("Vinod", vinodInfoMap);
     }
 
 
