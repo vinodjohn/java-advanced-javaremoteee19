@@ -2,6 +2,7 @@ package org.sda;
 
 import org.sda.generics.*;
 
+import java.io.*;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -56,7 +57,7 @@ public class Main {
 
         Iterator<String> stringIterator = animalList.listIterator();
 
-        while(stringIterator.hasNext()) {
+        while (stringIterator.hasNext()) {
             System.out.println(stringIterator.next() + " ,");
         }
 
@@ -81,7 +82,7 @@ public class Main {
         countrySet.add("Rootsi");
         // countrySet.add("Eesti"); -> Duplicates not allowed!
 
-        for (String country: countrySet) {
+        for (String country : countrySet) {
             System.out.println(country);
         }
 
@@ -91,7 +92,7 @@ public class Main {
 
 
         //MAP
-        Map<String,String> fullName = new HashMap<>(); // Not stored as sorted
+        Map<String, String> fullName = new HashMap<>(); // Not stored as sorted
         fullName.put("Vinod", "John");
         fullName.put("Martti", "Triksberg");
         fullName.put("Marko", "Piir");
@@ -122,9 +123,40 @@ public class Main {
         vinodInfoMap.put("residence", "Estonia");
         vinodInfoMap.put("phone", "123456");
         detailsMap.put("Vinod", vinodInfoMap);
+
+
+        //I/O
+        File absoluteFile = new File("C:\\VID\\ws\\java-advanced\\src\\main\\resources\\myText.txt");
+        File relativeFile = new File("myText.txt");
+
+        //File reading
+        try {
+            FileReader fileReader = new FileReader(absoluteFile);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String fileLine; // To store the line of text from the file
+
+            while ((fileLine = bufferedReader.readLine()) != null) {
+                System.out.println(fileLine);
+            }
+
+            bufferedReader.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        //File writing
+        try {
+            FileWriter fileWriter = new FileWriter(absoluteFile, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            String fileLine = "\nI can write an error-less Java code :D";
+            bufferedWriter.write(fileLine);
+            bufferedWriter.flush();
+            bufferedWriter.close();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
-
-
-
 
 }
