@@ -100,7 +100,7 @@ public class Main {
 
         //allMatch(): Used to check if all the elements in the list matching a given condition
         boolean isAllCarsGreaterThanFive = carList.stream()
-                .allMatch(s -> s.length() >= 5);
+                .allMatch(s -> s.length() >= 5);     // s = Each element in the array
         System.out.println(isAllCarsGreaterThanFive);
 
         //anyMatch(): Used to check if at least one element in the list matches the given condition
