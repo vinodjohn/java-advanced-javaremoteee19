@@ -2,6 +2,7 @@ package org.sda.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.ToString;
 
 /**
  * Person model
@@ -10,6 +11,7 @@ import lombok.Getter;
  */
 @AllArgsConstructor
 @Getter
+@ToString
 public class Person {
     private String firstName;
     private String lastName;
